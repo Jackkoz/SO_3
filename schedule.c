@@ -423,7 +423,8 @@ static void balance_queues(struct timer *tp)
         if (rmp->flags & IN_USE) {
             if (rmp->priority > rmp->max_priority)
             {
-                rmp->priority = rmp->max_priority;
+                rmp->priority -= 1;
+                
                 if (rmp-> tokens > 0)
                     schedule_process_local(rmp);
             }
