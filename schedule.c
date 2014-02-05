@@ -120,7 +120,7 @@ void assignTokens()
         schedproc[it].tokens += toGive;
         // If the process had fewer tokens than 1 they might have been out of the kernel
         // scheduling queues, therefore we need to reschedule it
-        if (toGive >= MAX_TOKENS)
+        if (toGive >= MAX_TOKENS && schedproc[it].tokens > 0)
             schedule_process_local(&schedproc[it]);
 
         it = (it + 1) % NR_PROCS;
